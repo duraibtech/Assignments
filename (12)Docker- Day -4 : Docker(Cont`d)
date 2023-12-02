@@ -1,1 +1,19 @@
+###Installing Docker on EC2 instance####
+ubuntu@ip-172-31-32-63:/home/ubuntu# sudo apt install docker.io -y
+ubuntu@ip-172-31-32-63:/home/ubuntu# sudo apt update
 
+#User modified#
+root@ip-172-31-32-63:/home/ubuntu# usermod -aG docker ubuntu
+
+ubuntu@ip-172-31-32-63:~$ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+app          a1        46012d7edff5   2 minutes ago   180MB
+ubuntu       latest    b6548eacb063   26 hours ago    77.8MB
+
+##Create Docker image
+ubuntu@ip-172-31-32-63:~$ docker build -t app:a1 .
+
+
+###Run a container###
+ubuntu@ip-172-31-32-63:~$ docker run -d -p 3000:80 --name mycontainers app:a1
+a7bf0f2b9d2fdf9eb119818d5dec27994222fceb5c70e5f939106505706a0532
